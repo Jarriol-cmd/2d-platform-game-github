@@ -10,13 +10,11 @@ public class TestScript : MonoBehaviour
 
     Rigidbody2D rb;
 
-
-
+    
     void Start()
     {
 
         rb = GetComponent<Rigidbody2D>();
-
 
     }
 
@@ -38,7 +36,17 @@ public class TestScript : MonoBehaviour
             yvel = 10;
         }
 
-        rb.linearVelocity = new Vector3(xvel, yvel, 0);
+        if (xvel >= 0)
+        {
+            xvel = -10f;
+        }
 
+        else if (xvel <= 0)
+        {
+            xvel = 10;
+        }
+
+        rb.linearVelocity = new Vector3(xvel, yvel, 0);
+        
     }
 }
