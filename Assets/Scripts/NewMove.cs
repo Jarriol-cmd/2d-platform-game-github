@@ -9,16 +9,17 @@ public class NewMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     Rigidbody2D rb;
-    public bool isFacingRight;
+    //public bool isFacingRight;
     bool isGrounded;
-
+    public int lives;
     public Animator anim;
+    HelperScript helper;
 
     void Start()
     {
-
+        lives = 5;
         rb = GetComponent<Rigidbody2D>();
-
+        helper = gameObject.AddComponent<HelperScript>();
     }
 
     // Update is called once per frame
@@ -86,6 +87,18 @@ public class NewMove : MonoBehaviour
 
         }
 
+        if (xvel > 0)
+        {
+            helper.DoFlipObject(true);    
+        }
+
+        if (xvel < 0)
+        {
+            helper.DoFlipObject(false);    
+        }
+
+
+        /*
         if (!isFacingRight && xvel > 0f)
         {
             Flip();
@@ -95,7 +108,7 @@ public class NewMove : MonoBehaviour
         {
             Flip();
         }
-
+        */
 
 
         rb.linearVelocity = new Vector3(xvel, yvel, 0);
@@ -132,7 +145,7 @@ public class NewMove : MonoBehaviour
 
 
     
-
+    /*
     private void Flip()
     {
         isFacingRight = !isFacingRight;
@@ -140,4 +153,5 @@ public class NewMove : MonoBehaviour
         localscale.x *= -1f;
         transform.localScale = localscale;
     }
+    */
 }

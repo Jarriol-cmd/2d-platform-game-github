@@ -1,3 +1,4 @@
+using UnityEditor.Build;
 using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
@@ -9,6 +10,8 @@ public class EnemyScript : MonoBehaviour
 
     float xvel,yvel;
 
+    public NewMove NewMove;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +19,7 @@ public class EnemyScript : MonoBehaviour
         xvel = 6;
         yvel = 0;
 
+        print("Enemy Says: you have " + NewMove.lives + " hours to live");
     }
 
     // Update is called once per frame
@@ -25,7 +29,7 @@ public class EnemyScript : MonoBehaviour
 
         //GroundCheck();
 
-
+        
         
         /*
         if (isGrounded == true && isFacingRight == false)

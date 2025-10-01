@@ -1,34 +1,37 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class RaisingEnemyScript : MonoBehaviour
+public class RaisingEnemy5 : MonoBehaviour
 {
     float xvel, yvel;
     Rigidbody2D rb;
+    float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         xvel = 0;
         yvel = 1;
+        timer = 2;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        DoJump();
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void DoJump()
     {
-
+        timer -= Time.deltaTime;
         
         float yvel = rb.linearVelocity.y;
         
-        if (collision.gameObject)
+        if (timer < 0)
         {
-            yvel =13f;
+            yvel = 9f;
+            timer = 2;
         }
 
 
